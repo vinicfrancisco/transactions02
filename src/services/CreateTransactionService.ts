@@ -5,7 +5,7 @@ import TransactionsRepository from '../repositories/TransactionsRepository';
 import Transaction from '../models/Transaction';
 import Category from '../models/Category';
 
-interface CreateTransaction {
+interface Request {
   title: string;
   value: number;
   type: 'income' | 'outcome';
@@ -18,7 +18,7 @@ class CreateTransactionService {
     value,
     type,
     category,
-  }: CreateTransaction): Promise<Transaction> {
+  }: Request): Promise<Transaction> {
     const transactionsRepository = getCustomRepository(TransactionsRepository);
     const categoriesRepository = getRepository(Category);
 
